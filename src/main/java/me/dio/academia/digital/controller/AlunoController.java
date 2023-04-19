@@ -5,6 +5,8 @@ import me.dio.academia.digital.entity.AvaliacaoFisica;
 import me.dio.academia.digital.entity.form.AlunoForm;
 import me.dio.academia.digital.service.impl.AlunoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -31,6 +33,17 @@ public class AlunoController {
   public List<Aluno> getAll(@RequestParam(value = "dataDeNascimento", required = false)
                                   String dataDeNacimento){
     return service.getAll(dataDeNacimento);
+  }
+  @GetMapping("{nome}")
+  public ResponseEntity<Aluno> GetByName(@PathVariable String nome) {
+    try {
+      Aluno aluno =  service.findByNome(nome);
+      System.out.println(aluno.getNome());
+      return new ResponseEntity<>(aluno, HttpStatus.OK);
+    }catch (Exception e){
+      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
   }
 
 

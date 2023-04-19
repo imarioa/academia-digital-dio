@@ -64,5 +64,8 @@ public class AlunoServiceImpl implements IAlunoService {
     return aluno.getAvaliacoes();
 
   }
+  public Aluno findByNome(String nome){
+      return repository.findByNome(nome);
+  }
 
 }

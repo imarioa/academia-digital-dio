@@ -36,4 +36,9 @@ public class Aluno {
   @JsonIgnore
   private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
 
+
+  @OneToMany(mappedBy = "aluno")
+  @JsonIgnore
+  private List<Treino> treino;
+
 }

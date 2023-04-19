@@ -3,6 +3,7 @@ package me.dio.academia.digital.entity.form;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import me.dio.academia.digital.entity.Treino;
 
 @Data
 @NoArgsConstructor
@@ -20,4 +21,5 @@ public class AvaliacaoFisicaForm {
   //@Positive(message = "${validatedValue}' precisa ser positivo.")
   //@DecimalMin(value = "150", message = "'${validatedValue}' precisa ser no mínimo {value}.")
   private double altura;
+
 }
