@@ -15,12 +15,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Mensagem para Imario"
-          command: "echo Hello, Imario!"
+          name: "Mensagem para Estranho"
+          command: "echo Hello, Estranho!"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  new-workflow:
     jobs:
       - say-hello
