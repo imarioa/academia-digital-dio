@@ -13,16 +13,16 @@ import java.util.List;
 public class AvaliacaoFisicaController {
 
   @Autowired
-  private AvaliacaoFisicaServiceImpl service;
+  private AvaliacaoFisicaServiceImpl serviceAvaliacao;
 
   @PostMapping
   public AvaliacaoFisica create(@RequestBody AvaliacaoFisicaForm form) {
-    return service.create(form);
+    return serviceAvaliacao.create(form);
   }
 
   @GetMapping
   public List<AvaliacaoFisica> getAll(){
-    return service.getAll();
+    return serviceAvaliacao.getAll();
   }
 
 }
