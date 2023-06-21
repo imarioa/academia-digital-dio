@@ -18,7 +18,7 @@ jobs:
       - checkout
       - run: echo "Unit Test realizado"
   
-  FrotTest:
+  FrontTest:
     docker:
       - image: cimg/base:stable
     steps:
