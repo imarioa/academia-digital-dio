@@ -44,16 +44,16 @@ workflows:
     jobs:
       - build
       - UnitTest:
-        requires:
-          - build
+          requires:
+            - build
       - FrontTest:
-        requires:
-          - build
+          requires:
+            - build
       - SanityTest:
-        requires:
-          - UnitTest
-          - FrontTest
+          requires:
+            - UnitTest
+            - FrontTest
       - RegressionTest:
-        requires:
-          - SanityTest
+          requires:
+            - SanityTest
 
