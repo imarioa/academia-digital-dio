@@ -3,13 +3,13 @@ server.port: 8081
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/pdhouse?useTimezone=true&serverTimezone=UTC&useLegacyDate
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost:5432/dio?useTimezone=true&serverTimezone=UTC&useLegacyDate
+    username: imario
+    password: imario
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate.format_sql: true
 
