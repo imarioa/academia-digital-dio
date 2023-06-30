@@ -58,7 +58,7 @@ workflows:
       - RegressionTest:
           requires:
             - SanityTest
-      - sonarqube/scan:
-            server-url: localhost:9000
+      - sonarqube/scan
+
 
 
