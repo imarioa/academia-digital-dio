@@ -98,7 +98,7 @@ jobs:
         description: The Biz-Ops system code.
         type: string
       token:
-        default: $SONAR_TOKEN
+        default: sqp_dcd8694fe536e8ad0c5397856cb69a52ca9fb425
         description: The SonarQube server token.
         type: string
     steps:
