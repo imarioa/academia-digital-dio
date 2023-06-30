@@ -4,7 +4,8 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 orbs:
-  sonarqube: ft-circleci-orbs/sonarqube-orb@1.0.0
+#  sonarqube: ft-circleci-orbs/sonarqube-orb@1.0.0
+  sonarqube: clicklogiq/sonarqube@1.0.1
 jobs:
   build:
     docker:
@@ -58,7 +59,7 @@ workflows:
       - RegressionTest:
           requires:
             - SanityTest
-      - sonarqube/scan
+      - sonarqube/analyze
 
 
 
