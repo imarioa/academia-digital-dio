@@ -1,67 +1,10 @@
 
 version: 2.1
 
-commands:
-  scan:
-    description: |
-      This command echos the status of the sonarqube scan.
-    parameters:
-      engine-version:
-        description: The SonarQube scanner version.
-        type: string
-      pull-request-base:
-        description: The pull request base.
-        type: string
-      pull-request-branch:
-        description: The pull request branch.
-        type: string
-      pull-request-key:
-        description: The pull request key.
-        type: string
-      server-url:
-        description: The SonarQube server URL.
-        type: string
-      system-code:
-        description: The Biz-Ops system code.
-        type: string
-      token:
-        description: The SonarQube server token.
-        type: string
-    steps:
-      - run:
-          command: |
-            wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-<<parameters.engine-version>>-linux.zip
-            unzip sonar-scanner-cli-<<parameters.engine-version>>-linux.zip
-          name: Install SonarQube Scanner
-      - run:
-          command: |
-            if [ -z <<parameters.pull-request-key>> ]; then
-              ./sonar-scanner-<<parameters.engine-version>>-linux/bin/sonar-scanner \
-              -Dsonar.projectKey=<<parameters.system-code>> \
-              -Dsonar.sources=. \
-              -Dsonar.host.url=<<parameters.server-url>> \
-              -Dsonar.login=<<parameters.token>>
-            else
-              ./sonar-scanner-<<parameters.engine-version>>-linux/bin/sonar-scanner \
-              -Dsonar.projectKey=<<parameters.system-code>> \
-              -Dsonar.sources=. \
-              -Dsonar.host.url=<<parameters.server-url>> \
-              -Dsonar.login=<<parameters.token>> \
-              -Dsonar.pullrequest.key=<<parameters.pull-request-key>> \
-              -Dsonar.pullrequest.branch=<<parameters.pull-request-branch>> \
-              -Dsonar.pullrequest.base=<<parameters.pull-request-base>>
-            fi
-          name: Run SonarQube Scanner
-executors:
-  node:
-    description: This is the circleci node docker image.
-    docker:
-      - image: circleci/node:<<parameters.tag>>
-    parameters:
-      tag:
-        default: "12.16"
-        description: The node image version.
-        type: string
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/configuration-reference/#jobs
+orbs:
+  sonarqube: ft-circleci-orbs/sonarqube-orb@1.0.0
 jobs:
   build:
     docker:
@@ -69,48 +12,7 @@ jobs:
     steps:
       - checkout
       - run: echo "Build realizado"
-  scan:
-    description: |
-      This job runs the scan command.
-    executor: node
-    parameters:
-      engine-version:
-        default: 4.6.0.2311
-        description: The SonarQube scanner version.
-        type: string
-      pull-request-base:
-        default: main
-        description: The pull request base.
-        type: string
-      pull-request-branch:
-        default: ${CIRCLE_BRANCH}
-        description: The pull request branch.
-        type: string
-      pull-request-key:
-        default: ${CIRCLE_PULL_REQUEST##*/}
-        description: The pull request key.
-        type: string
-      server-url:
-        default: https://sonarqube.in.ft.com
-        description: The SonarQube server URL.
-        type: string
-      system-code:
-        description: The Biz-Ops system code.
-        type: string
-      token:
-        default: sqp_dcd8694fe536e8ad0c5397856cb69a52ca9fb425
-        description: The SonarQube server token.
-        type: string
-    steps:
-      - checkout
-      - scan:
-          engine-version: <<parameters.engine-version>>
-          pull-request-base: <<parameters.pull-request-base>>
-          pull-request-branch: <<parameters.pull-request-branch>>
-          pull-request-key: <<parameters.pull-request-key>>
-          server-url: <<parameters.server-url>>
-          system-code: <<parameters.system-code>>
-          token: <<parameters.token>>
+
   UnitTest:
     docker:
       - image: cimg/base:stable
@@ -156,5 +58,5 @@ workflows:
       - RegressionTest:
           requires:
             - SanityTest
-      - scan
+      - sonarqube/scan
 
