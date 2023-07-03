@@ -24,6 +24,6 @@ public class Treino {
     private Aluno aluno;
     @ManyToOne
     @JoinColumn(name = "exercicio_id")
-    private Exercicio exercicio
+    private Exercicio exercicio;
 
 }
