@@ -60,7 +60,7 @@ workflows:
           requires:
             - SanityTest
       - sonarqube/analyze:
-          host_url: https://sonarcloud.io/
+          host_url: "https://sonarcloud.io/"
 
 
 
