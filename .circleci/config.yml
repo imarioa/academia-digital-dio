@@ -32,6 +32,9 @@ commands:
       token:
         description: The SonarQube server token.
         type: string
+      organization:
+        description: The organization name.
+        type: string
     steps:
       - run:
           command: |
@@ -46,6 +49,7 @@ commands:
               -Dsonar.sources=. \
               -Dsonar.host.url=<<parameters.server-url>> \
               -Dsonar.login=<<parameters.token>> \
+              -Dsonar.organization=<<parameters.organization>>
               
             else
               ./sonar-scanner-<<parameters.engine-version>>-linux/bin/sonar-scanner \
@@ -95,12 +99,15 @@ jobs:
         description: The SonarQube server URL.
         type: string
       system-code:
-        default: Imario Almeida
         description: The Biz-Ops system code.
         type: string
       token:
         default: $SONAR_TOKEN
         description: The SonarQube server token.
+        type: string
+      organization:
+        default: Imario Almeida
+        description: The organization name.
         type: string
     steps:
       - checkout
@@ -112,6 +119,7 @@ jobs:
           server-url: <<parameters.server-url>>
           system-code: <<parameters.system-code>>
           token: <<parameters.token>>
+          organization: <<parameters.organization>>
   build:
     docker:
       - image: cimg/base:stable
