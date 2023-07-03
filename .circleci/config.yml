@@ -165,7 +165,8 @@ jobs:
 
       - image: cimg/postgres:14.0
         environment:
-            POSTGRES_USER: circleci-demo-go
+            POSTGRES_USER: imario
+            POSTGRES_PASSWORD: imario
             POSTGRES_DB: dio
     steps:
       - checkout
