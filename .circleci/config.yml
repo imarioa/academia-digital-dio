@@ -62,6 +62,45 @@ commands:
               -Dsonar.pullrequest.base=<<parameters.pull-request-base>>
             fi
           name: Run SonarQube Scanner
+  maven-send-to-sonar:
+    description: "Maven send to SonarCloud"
+    parameters:
+      project-key:
+        description: Sonar project key
+        default: imarioa_academia-digital-dio
+        type: string
+      token:
+        description: The SonarQube server token.
+        default: $SONAR_TOKEN
+        type: string
+      organization:
+        description: The organization name.
+        default: imarioa
+        type: string
+    steps:
+      - run:
+          name: "Maven send to Sonar"
+          command: |
+            if ["${CIRCLE_PULL_REQUEST##*/}" == ""];
+            then
+              echo "Branch analysis..."
+              mvn verify sonar:sonar \
+                -Dsonar.host.url=https://sonarcloud.io \
+                -Dsonar.organization=<<parameters.organization>> \
+                -Dsonar.login=<<parameters.token>> \
+                -Dsonar.projectKey=<<parameters.project-key>>
+            else
+              echo "PR analysis..."
+              mvn verify sonar:sonar \
+                -Dsonar.host.url=https://sonarcloud.io \
+                -Dsonar.organization=<<parameters.organization>> \
+                -Dsonar.login=<<parameters.token>> \
+                -Dsonar.projectKey=<<parameters.project-key>> \
+                -Dsonar.pullrequest.key=${CIRCLE_PULL_REQUEST##*/} \
+                -Dsonar.pullrequest.branch=${CIRCLE_BRANCH} \
+                -Dsonar.pullrequest.provider=GitHub \
+                -Dsonar.pullrequest.base=master
+            fi
 executors:
   node:
     description: This is the circleci node docker image.
@@ -106,7 +145,7 @@ jobs:
         description: The SonarQube server token.
         type: string
       organization:
-        default: Imario Almeida
+        default: imarioa
         description: The organization name.
         type: string
     steps:
@@ -120,6 +159,14 @@ jobs:
           system-code: <<parameters.system-code>>
           token: <<parameters.token>>
           organization: <<parameters.organization>>
+  scan-mvn:
+    docker:
+      - image: cimg/openjdk:20.0.1
+    steps:
+      - checkout
+      - maven-send-to-sonar
+
+
   build:
     docker:
       - image: cimg/base:stable
@@ -172,7 +219,7 @@ workflows:
       - RegressionTest:
           requires:
             - SanityTest
-      - scan
+      - scan-mvn
 
 
 
