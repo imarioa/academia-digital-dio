@@ -45,7 +45,8 @@ commands:
               -Dsonar.projectKey=<<parameters.system-code>> \
               -Dsonar.sources=. \
               -Dsonar.host.url=<<parameters.server-url>> \
-              -Dsonar.login=<<parameters.token>>
+              -Dsonar.login=<<parameters.token>> \
+              
             else
               ./sonar-scanner-<<parameters.engine-version>>-linux/bin/sonar-scanner \
               -Dsonar.projectKey=<<parameters.system-code>> \
@@ -94,7 +95,7 @@ jobs:
         description: The SonarQube server URL.
         type: string
       system-code:
-        default: primeiroTeste
+        default: Imario Almeida
         description: The Biz-Ops system code.
         type: string
       token:
