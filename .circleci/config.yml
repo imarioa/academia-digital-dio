@@ -59,7 +59,8 @@ workflows:
       - RegressionTest:
           requires:
             - SanityTest
-      - sonarqube/scan
+      - sonarqube/scan:
+          server-url: https://sonarcloud.io/
 
 
 
