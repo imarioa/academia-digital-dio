@@ -38,11 +38,6 @@ commands:
     steps:
       - run:
           command: |
-            wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-<<parameters.engine-version>>-linux.zip
-            unzip sonar-scanner-cli-<<parameters.engine-version>>-linux.zip
-          name: Install SonarQube Scanner
-      - run:
-          command: |
             if [ -z <<parameters.pull-request-key>> ]; then
               ./sonar-scanner-<<parameters.engine-version>>-linux/bin/sonar-scanner \
               -Dsonar.projectKey=<<parameters.system-code>> \
@@ -62,45 +57,6 @@ commands:
               -Dsonar.pullrequest.base=<<parameters.pull-request-base>>
             fi
           name: Run SonarQube Scanner
-  maven-send-to-sonar:
-    description: "Maven send to SonarCloud"
-    parameters:
-      project-key:
-        description: Sonar project key
-        default: imarioa_academia-digital-dio
-        type: string
-      token:
-        description: The SonarQube server token.
-        default: $SONAR_TOKEN
-        type: string
-      organization:
-        description: The organization name.
-        default: imarioa
-        type: string
-    steps:
-      - run:
-          name: "Maven send to Sonar"
-          command: |
-            if ["${CIRCLE_PULL_REQUEST##*/}" == ""];
-            then
-              echo "Branch analysis..."
-              mvn verify sonar:sonar \
-                -Dsonar.host.url=https://sonarcloud.io \
-                -Dsonar.organization=<<parameters.organization>> \
-                -Dsonar.login=<<parameters.token>> \
-                -Dsonar.projectKey=<<parameters.project-key>>
-            else
-              echo "PR analysis..."
-              mvn verify sonar:sonar \
-                -Dsonar.host.url=https://sonarcloud.io \
-                -Dsonar.organization=<<parameters.organization>> \
-                -Dsonar.login=<<parameters.token>> \
-                -Dsonar.projectKey=<<parameters.project-key>> \
-                -Dsonar.pullrequest.key=${CIRCLE_PULL_REQUEST##*/} \
-                -Dsonar.pullrequest.branch=${CIRCLE_BRANCH} \
-                -Dsonar.pullrequest.provider=GitHub \
-                -Dsonar.pullrequest.base=master
-            fi
 executors:
   node:
     description: This is the circleci node docker image.
@@ -145,7 +101,7 @@ jobs:
         description: The SonarQube server token.
         type: string
       organization:
-        default: imarioa
+        default: Imario Almeida
         description: The organization name.
         type: string
     steps:
@@ -159,19 +115,6 @@ jobs:
           system-code: <<parameters.system-code>>
           token: <<parameters.token>>
           organization: <<parameters.organization>>
-  scan-mvn:
-    docker:
-      - image: cimg/openjdk:20.0.1
-
-      - image: cimg/postgres:14.0
-        environment:
-            POSTGRES_USER: circleci-demo-go
-            POSTGRES_DB: dio
-    steps:
-      - checkout
-      - maven-send-to-sonar
-
-
   build:
     docker:
       - image: cimg/base:stable
@@ -224,7 +167,7 @@ workflows:
       - RegressionTest:
           requires:
             - SanityTest
-      - scan-mvn
+      - scan
 
 
 
