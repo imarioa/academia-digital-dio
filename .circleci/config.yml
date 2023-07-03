@@ -59,8 +59,7 @@ workflows:
       - RegressionTest:
           requires:
             - SanityTest
-      - sonarqube/analyze:
-          host_url: "https://sonarcloud.io/"
+      - sonarqube/analyze
 
 
 
