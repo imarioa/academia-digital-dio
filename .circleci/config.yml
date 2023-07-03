@@ -94,6 +94,7 @@ jobs:
         description: The SonarQube server URL.
         type: string
       system-code:
+        default: primeiroTeste
         description: The Biz-Ops system code.
         type: string
       token:
