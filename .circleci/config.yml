@@ -6,6 +6,7 @@ version: 2.1
 #orbs:
 #  sonarqube: ft-circleci-orbs/sonarqube-orb@1.0.0
 #  sonarqube: ft-circleci-orbs/sonarqube-orb@1.0.0
+#teste
 commands:
   scan:
     description: |
