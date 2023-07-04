@@ -72,7 +72,7 @@ commands:
         type: string
       token:
         description: The SonarQube server token.
-        default: $SONAR_TOKEN
+        default: 5802e1f71c53d8b1facddbb7104c357f6be1667e
         type: string
       organization:
         description: The organization name.
