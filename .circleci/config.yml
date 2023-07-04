@@ -166,8 +166,7 @@ jobs:
             PGHOST: 127.0.0.1
       - image: cimg/postgres:14.0
         environment:
-            POSTGRES_USER: imario
-            POSTGRES_PASSWORD: imario
+            POSTGRES_USER: postgres
             POSTGRES_DB: dio
     steps:
       - checkout
