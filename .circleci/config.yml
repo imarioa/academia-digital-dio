@@ -68,15 +68,15 @@ commands:
     parameters:
       project-key:
         description: Sonar project key
-        default: imarioa_academia-digital-dio
+        default: $SONAR_PK
         type: string
       token:
         description: The SonarQube server token.
-        default: 5802e1f71c53d8b1facddbb7104c357f6be1667e
+        default: $SONAR_TOKEN
         type: string
       organization:
         description: The organization name.
-        default: imarioa
+        default: $SONAR_ORGANIZATION
         type: string
     steps:
       - run:
