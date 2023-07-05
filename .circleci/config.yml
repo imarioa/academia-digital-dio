@@ -118,6 +118,12 @@ commands:
             echo ${task_id}
             sleep 0.5
             ce_status=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=${task_id} | jq -r .task.status)
+            ce_status="teste"
+            echo "Workflow ${CIRCLE_WORKFLOW_ID}"
+            if [ "${qg_status}" != "OK" ]; then
+                echo "QG Script --> Quality gate is not OK - exiting with error 1"
+                curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
+            fi
             echo "Status"
             echo ${qg_status}
 executors:
@@ -193,10 +199,7 @@ jobs:
       - run: |
           echo $(pwd)
           echo ${qg_status}
-          if [ "${qg_status}" != "OK" ]; then
-                echo "QG Script --> Quality gate is not OK - exiting with error 1"
-                curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
-          fi
+          
 
   build:
     docker:
