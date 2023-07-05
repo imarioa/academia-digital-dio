@@ -195,7 +195,7 @@ jobs:
           echo ${qg_status}
           if [ "${qg_status}" != "OK" ]; then
                 echo "QG Script --> Quality gate is not OK - exiting with error 1"
-                circleci-agent step halt
+                curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
           fi
 
   build:
