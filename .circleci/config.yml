@@ -90,7 +90,7 @@ commands:
                 -Dsonar.organization=<<parameters.organization>> \
                 -Dsonar.login=<<parameters.token>> \
                 -Dsonar.projectKey=<<parameters.project-key>>
-              cat academia-digital-dio/target/sonar/report-task.txt
+              echo "$(pwd)"
             else
               echo "PR analysis..."
               mvn verify sonar:sonar \
