@@ -123,7 +123,7 @@ commands:
             if [ "${qg_status}" != "OK" ]; then
                 echo "QG Script --> Quality gate is not OK - exiting with error 1"
                 curl --request POST \
-                --url https://circleci.com/api/v2/workflow/$[CIRCLE_WORKFLOW_ID]/cancel \
+                --url https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel \
                 --header 'authorization: Basic ${CIRCLE_API_TOKEN}'
             fi
             echo "Status"
