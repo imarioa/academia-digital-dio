@@ -84,7 +84,7 @@ commands:
     steps:
       - run:
           command: |
-            apt get install -y jq
+            apt install -y jq
       - run:
           name: "Maven send to Sonar"
           command: |
