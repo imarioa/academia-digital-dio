@@ -97,8 +97,7 @@ commands:
                 -Dsonar.organization=<<parameters.organization>> \
                 -Dsonar.login=<<parameters.token>> \
                 -Dsonar.projectKey=<<parameters.project-key>>
-              ce_status=$(curl -s -u <<parameters.project-key>>: https://sonarcloud.io/api/ce/task?id=$(cat <<parameters.reṕort-path>> | grep "ceTaskId=" | cut -d'=' -f2) | jq -r .task.status)
-              cat $ce_status
+            
             else
               echo "PR analysis..."
               mvn verify sonar:sonar \
