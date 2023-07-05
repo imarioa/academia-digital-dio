@@ -22,7 +22,7 @@ public class AvaliacaoFisicaController {
 
   @GetMapping
   public List<AvaliacaoFisica> getAll(){
-    return null;
+    return serviceAvaliacao.getAll();
   }
 //return serviceAvaliacao.getAll();
 }
