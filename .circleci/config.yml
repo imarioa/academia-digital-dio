@@ -96,8 +96,6 @@ commands:
                 -Dsonar.organization=<<parameters.organization>> \
                 -Dsonar.login=<<parameters.token>> \
                 -Dsonar.projectKey=<<parameters.project-key>>
-              echo $(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=$(cat /home/circleci/project/target/sonar/report-task.txt | grep "ceTaskId=" | cut -d'=' -f2) | jq -r .task.status)
-              
             else
               echo "PR analysis..."
               mvn verify sonar:sonar \
@@ -110,6 +108,11 @@ commands:
                 -Dsonar.pullrequest.provider=GitHub \
                 -Dsonar.pullrequest.base=master
             fi
+      - run:
+          name: "Check status"
+          command: |
+            echo "Status"
+            echo $(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=$(cat /home/circleci/project/target/sonar/report-task.txt | grep "ceTaskId=" | cut -d'=' -f2) | jq -r .task.status)
 executors:
   node:
     description: This is the circleci node docker image.
