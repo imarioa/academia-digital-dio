@@ -24,5 +24,5 @@ public class AvaliacaoFisicaController {
   public List<AvaliacaoFisica> getAll(){
     return serviceAvaliacao.getAll();
   }
-//return serviceAvaliacao.getAll();
+//return serviceAvaliacao.getAll(); 2
 }
