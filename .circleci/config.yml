@@ -108,21 +108,6 @@ commands:
                 -Dsonar.pullrequest.provider=GitHub \
                 -Dsonar.pullrequest.base=master
             fi
-            task_id=$(cat /home/circleci/project/target/sonar/report-task.txt | grep "ceTaskId=" | cut -d'=' -f2)
-            ce_analysis_id=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=${task_id} | jq -r .task.analysisId)
-            qg_status=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/qualitygates/project_status?analysisId="${ce_analysis_id}" | jq -r .projectStatus.status)
-            echo "Task Id"
-            echo ${task_id}
-            sleep 0.5
-            ce_status=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=${task_id} | jq -r .task.status)
-            qg_status="teste"
-            echo "Workflow ${CIRCLE_WORKFLOW_ID}"
-                if [ "${qg_status}" != "OK" ]; then
-                    echo "QG Script --> Quality gate is not OK - exiting with error 1"
-                    curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=${CIRCLE_API_TOKEN}"
-                fi
-            echo "Status"
-            echo ${qg_status}
       - run:
           name: "Check status"
           command: |
@@ -137,7 +122,10 @@ commands:
             echo "Workflow ${CIRCLE_WORKFLOW_ID}"
             if [ "${qg_status}" != "OK" ]; then
                 echo "QG Script --> Quality gate is not OK - exiting with error 1"
-                curl -X POST "https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel?circle-token=$CIRCLE_API_TOKEN"
+                #curl -X POST "https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel?circle-token=${CIRCLE_API_TOKEN}"
+                curl --request POST \
+                --url https://circleci.com/api/v2/workflow/$[CIRCLE_WORKFLOW_ID]/cancel \
+                --header 'authorization: Basic ${CIRCLE_API_TOKEN}'
             fi
             echo "Status"
             echo ${qg_status}
