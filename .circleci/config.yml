@@ -119,10 +119,6 @@ commands:
             sleep 0.5
             ce_status=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=${task_id} | jq -r .task.status)
             echo "Status"
-            if [ "${qg_status}" != "OK" ]; then
-                echo "QG Script --> Quality gate is not OK - exiting with error 1"
-                circleci-agent step halt
-            fi
             echo ${qg_status}
 executors:
   node:
@@ -194,7 +190,11 @@ jobs:
     steps:
       - checkout
       - maven-send-to-sonar
-
+      - run: |
+          if [ "${qg_status}" != "OK" ]; then
+                echo "QG Script --> Quality gate is not OK - exiting with error 1"
+                circleci-agent step halt
+          fi
 
   build:
     docker:
