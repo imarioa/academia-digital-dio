@@ -90,7 +90,7 @@ commands:
                 -Dsonar.organization=<<parameters.organization>> \
                 -Dsonar.login=<<parameters.token>> \
                 -Dsonar.projectKey=<<parameters.project-key>>
-              echo "$(ls)"
+              cat /home/circleci/project/target/sonar/report-task.txt
             else
               echo "PR analysis..."
               mvn verify sonar:sonar \
