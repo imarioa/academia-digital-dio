@@ -16,8 +16,8 @@ public class ExercicioController {
 
     @PostMapping
     public Exercicio create(@RequestBody ExercicioForm form){
-        return service.create(form);
-    }
+        return null;
+    } //return service.create(form);
 
     @GetMapping
     public List<Exercicio> getAll(){
