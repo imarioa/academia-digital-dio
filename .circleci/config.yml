@@ -206,7 +206,9 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: echo "Build realizado"
+      - run: |
+          echo "Build realizado"
+          circleci-agent step halt
 
   UnitTest:
     docker:
@@ -234,7 +236,8 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: echo "Regression Test realizado"
+      - run: |
+          echo "Regression Test realizado"
 
 workflows:
   test-workflow:
