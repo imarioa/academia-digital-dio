@@ -206,9 +206,9 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: |
-          echo "Build realizado"
-          circleci-agent step halt
+      - run:
+          command: circleci-agent step halt
+
 
   UnitTest:
     docker:
