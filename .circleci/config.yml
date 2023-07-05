@@ -109,7 +109,7 @@ commands:
                 -Dsonar.pullrequest.base=master
             fi
       - run:
-          name: "Check status"
+          name: "Check statuss"
           command: |
             task_id=$(cat /home/circleci/project/target/sonar/report-task.txt | grep "ceTaskId=" | cut -d'=' -f2)
             ce_analysis_id=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=${task_id} | jq -r .task.analysisId)
