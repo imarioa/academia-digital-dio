@@ -111,8 +111,12 @@ commands:
       - run:
           name: "Check status"
           command: |
+            task_id=$(cat /home/circleci/project/target/sonar/report-task.txt | grep "ceTaskId=" | cut -d'=' -f2)
+            echo "Task Id"
+            echo ${task_id}
+            ce_status=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=${task_id}
             echo "Status"
-            echo $(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=$(cat /home/circleci/project/target/sonar/report-task.txt | grep "ceTaskId=" | cut -d'=' -f2) | jq -r .task.status)
+            echo ${ce_status}
 executors:
   node:
     description: This is the circleci node docker image.
