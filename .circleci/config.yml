@@ -191,6 +191,8 @@ jobs:
       - checkout
       - maven-send-to-sonar
       - run: |
+          echo $(pwd)
+          echo ${qg_status}
           if [ "${qg_status}" != "OK" ]; then
                 echo "QG Script --> Quality gate is not OK - exiting with error 1"
                 circleci-agent step halt
