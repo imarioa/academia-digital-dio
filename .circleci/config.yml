@@ -90,7 +90,7 @@ commands:
                 -Dsonar.organization=<<parameters.organization>> \
                 -Dsonar.login=<<parameters.token>> \
                 -Dsonar.projectKey=<<parameters.project-key>>
-              echo "$(pwd)"
+              echo "$(ls)"
             else
               echo "PR analysis..."
               mvn verify sonar:sonar \
