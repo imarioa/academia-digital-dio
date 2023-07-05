@@ -123,9 +123,8 @@ commands:
             echo "API TOKEN ${CIRCLE_API_TOKEN}"
             if [ "${qg_status}" != "OK" ]; then
                 echo "QG Script --> Quality gate is not OK - exiting with error 1"
-                curl --request POST \
-                --url https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel \
-                --header 'Circle-Token: ${CIRCLE_API_TOKEN}'
+                curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
+                
             fi
             echo "Status"
             echo ${qg_status}
