@@ -244,9 +244,11 @@ workflows:
       - UnitTest:
           requires:
             - build
+            - scan-mvn
       - FrontTest:
           requires:
             - build
+            - scan-mvn
       - SanityTest:
           requires:
             - UnitTest
