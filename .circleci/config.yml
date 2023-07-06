@@ -208,7 +208,7 @@ jobs:
       - checkout
       - run: |
           echo "Build realizado"
-          curl -X POST https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel -H 'authorization: Basic ${CIRCLE_API_TOKEN}' 
+          curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN" 
 
 
   UnitTest:
