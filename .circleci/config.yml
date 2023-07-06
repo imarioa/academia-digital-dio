@@ -83,6 +83,7 @@ commands:
         type: string
     steps:
       - run:
+          name: "Install jq"
           command: |
             sudo apt install -y jq
       - run:
@@ -237,11 +238,9 @@ workflows:
       - build
       - UnitTest:
           requires:
-            - build
             - scan-mvn
       - FrontTest:
           requires:
-            - build
             - scan-mvn
       - SanityTest:
           requires:
