@@ -111,12 +111,11 @@ commands:
       - run:
           name: "Check status"
           command: |
+            sleep 0.5
             task_id=$(cat /home/circleci/project/target/sonar/report-task.txt | grep "ceTaskId=" | cut -d'=' -f2)
             ce_analysis_id=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=${task_id} | jq -r .task.analysisId)
-            qg_status=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/qualitygates/project_status?analysisId="${ce_analysis_id}" | jq -r .projectStatus.status)
-            sleep 0.5
             ce_status=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/ce/task?id=${task_id} | jq -r .task.status)
-            qg_status="teste1"
+            qg_status=$(curl -s -u <<parameters.token>>: https://sonarcloud.io/api/qualitygates/project_status?analysisId="${ce_analysis_id}" | jq -r .projectStatus.status)
             echo "Workflow ${CIRCLE_WORKFLOW_ID}"
             echo "API TOKEN ${CIRCLE_API_TOKEN}"
             if [ "${qg_status}" != "OK" ]; then
@@ -195,11 +194,6 @@ jobs:
     steps:
       - checkout
       - maven-send-to-sonar
-      - run: |
-          echo $(pwd)
-          echo ${qg_status}
-          
-
   build:
     docker:
       - image: cimg/base:stable
