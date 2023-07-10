@@ -29,8 +29,8 @@ jobs:
         cache: maven
     - name: Testes variaveis
       run: |
-       
-        ls -la ~
+        echo $V_TESTE >> ~/.bashrc
+        source ~/.bashrc
         echo "teste1 : ${TESTE}"
         echo $TESTE2
         echo $TESTE3
