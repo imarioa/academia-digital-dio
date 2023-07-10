@@ -32,7 +32,7 @@ jobs:
         echo ${{vars.V_TESTE}} >> ~/.bashrc
         source ~/.bashrc
         
-        echo "teste1 : ${TESTE}"
+        echo $TESTE
         echo $TESTE2
         echo $TESTE3
         
