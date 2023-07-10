@@ -29,11 +29,11 @@ jobs:
         cache: maven
     - name: Testes variaveis
       run: |
-        echo "${{secrets.ENV_FILE}}" >> ~/.bashrc
-        source ~/.bashrc
+       
+        ls -la ~
         echo "teste1 : ${TESTE}"
         echo $TESTE2
         echo $TESTE3
         
-
+      #echo "${{secrets.ENV_FILE}}" >> ~/.bashrc
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
