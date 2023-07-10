@@ -39,9 +39,8 @@ jobs:
         echo "${{secrets.ENV_FILE}}" > build.sh
         chmod +x build.sh
         ./build.sh
-        echo ${TESTE}
-        echo ${TESTE2}
-        echo ${TESTE3}
+        export IMARIO=imario123
+        echo $IMARIO
         
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
