@@ -23,7 +23,7 @@ jobs:
         echo ${{secrets.S_TESTE}} >> ~/.bashrc
         source ~/.bashrc
         export TESTE45=Imario
-        echo $TESTE1
+        echo ${TESTE1}
         echo "teste1=${TESTE1}" >> $GITHUB_OUTPUT
         echo "teste2=${TESTE2}" >> $GITHUB_OUTPUT
     outputs:
@@ -54,4 +54,5 @@ jobs:
     steps:
       - name: Teste persistencia
         run: |
-          echo "${{ needs.seting-variables.outputs.teste }}"
+          echo "${{ needs.seting-variables.outputs.teste1 }}"
+          echo "${{ needs.seting-variables.outputs.teste2 }}"
