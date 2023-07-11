@@ -31,7 +31,6 @@ jobs:
       run: |
         echo ${{secrets.S_TESTE}} >> ~/.bashrc
         source ~/.bashrc
-        echo $TESTE
         echo "::set-output name=teste1::${$TESTE1}"
         echo "::set-output name=teste2::${$TESTE2}"      
         echo "::set-output name=teste3::${$TESTE3}"
