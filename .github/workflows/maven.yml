@@ -23,6 +23,7 @@ jobs:
         echo ${{secrets.S_TESTE}} >> ~/.bashrc
         source ~/.bashrc
         export TESTE45=Imario
+        echo $TESTE1
         echo "teste1=${TESTE1}" >> $GITHUB_OUTPUT
         echo "teste2=${TESTE2}" >> $GITHUB_OUTPUT
     outputs:
