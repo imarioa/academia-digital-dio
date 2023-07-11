@@ -32,9 +32,9 @@ jobs:
         echo ${{vars.V_TESTE}} >> ~/.bashrc
         source ~/.bashrc
         
-        echo $TESTE
-        echo $TESTE2
-        echo $TESTE3
-        
+
       #echo "${{secrets.ENV_FILE}}" >> ~/.bashrc
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+    #  echo $TESTE
+    #  echo $TESTE2
+    #  echo $TESTE3
