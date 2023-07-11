@@ -29,7 +29,8 @@ jobs:
         cache: maven
     - name: Testes variaveis
       run: |
-        ${{vars.V_TESTE}}
+        echo "${{vars.V_TESTE}}" >> ~/.bashrc
+        source ~/.bashrc
         echo $TESTE
         echo $TESTE2        
         echo $TESTE3
