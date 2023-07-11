@@ -51,4 +51,4 @@ jobs:
     steps:
       - name: Teste persistencia
         run: |
-          echo "${{ needs.seting-variables.outputs.teste }}"
+          echo "${{ needs.seting-variables.teste }}"
