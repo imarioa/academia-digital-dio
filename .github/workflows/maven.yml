@@ -31,7 +31,7 @@ jobs:
       run: |
         echo ${{vars.V_TESTE}} >> ~/.bashrc
         source ~/.bashrc
-        echo $TESTE
+        echo $TESTE1
         echo $TESTE2        
         echo $TESTE3
       #echo "${{secrets.ENV_FILE}}" >> ~/.bashrc
