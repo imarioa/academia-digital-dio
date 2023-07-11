@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
     - uses: actions/checkout@v3
     - name: Set up JDK 11
       uses: actions/setup-java@v3
@@ -27,14 +28,18 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+
     - name: Testes variaveis
+    - id: builds
       run: |
         echo ${{secrets.S_TESTE}} >> ~/.bashrc
         source ~/.bashrc
         echo $TESTE
-        echo $TESTE1
-        echo $TESTE2        
-        echo $TESTE3
+        echo "::set-output name=teste1::${$TESTE1}"
+        echo "::set-output name=teste2::${$TESTE2}"      
+        echo "::set-output name=teste3::${$TESTE3}"
+    outputs:
+      teste1: ${{steps.builds.outputs.teste1}}
     #echo "${{secrets.ENV_FILE}}" >> ~/.bashrc
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #  echo $TESTE1
@@ -46,4 +51,4 @@ jobs:
     steps:
       - name: Teste persistencia
         run: |
-          echo $TESTE1
+          echo "${{ needs.build.outputs.teste1 }}"
