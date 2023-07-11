@@ -23,11 +23,8 @@ jobs:
         echo ${{secrets.S_TESTE}} >> ~/.bashrc
         source ~/.bashrc
         export TESTE45=Imario
-        echo "::set-output name=teste1::${TESTE45}"
+        echo "teste=${TESTE45}" >> $GITHUB_OUTPUT
         echo "::set-output name=teste2::${TESTE1}"
-    outputs:
-      teste1: ${{ steps.teste.outputs.teste1 }}
-      teste2: ${{ steps.teste.outputs.teste2 }}
 
   build:
     runs-on: ubuntu-latest
@@ -54,4 +51,4 @@ jobs:
     steps:
       - name: Teste persistencia
         run: |
-          echo "${{ needs.seting-variables.outputs.teste2 }}"
+          echo "${{ needs.seting-variables.outputs.teste }}"
