@@ -25,7 +25,9 @@ jobs:
         export TESTE45=Imario
         echo "teste=${TESTE45}" >> $GITHUB_OUTPUT
         echo "::set-output name=teste2::${TESTE1}"
-
+    outputs:
+      teste: ${{ steps.teste.outputs.teste }}
+      teste2: ${{ steps.teste.outputs.teste2 }}
   build:
     runs-on: ubuntu-latest
     steps:
@@ -51,4 +53,4 @@ jobs:
     steps:
       - name: Teste persistencia
         run: |
-          echo "${{ steps.teste.outputs.teste }}"
+          echo "${{ needs.seting-variables.outputs.teste }}"
