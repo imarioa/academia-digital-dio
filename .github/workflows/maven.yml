@@ -36,6 +36,6 @@ jobs:
         echo $TESTE3
       #echo "${{secrets.ENV_FILE}}" >> ~/.bashrc
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    #  echo $TESTE12
+    #  echo $TESTE123
     #  echo $TESTE2
     #  echo $TESTE3
