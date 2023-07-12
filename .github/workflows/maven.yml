@@ -26,7 +26,7 @@ jobs:
         echo "Com TR"
         tr -d 'g' < teste.txt
         
-        echo ${{var.V_TESTE2}} >> ~/.bashrc
+        
         source ~/.bashrc
         ls $DOCKER_ORGANIZATION
         echo "docker_org=${DOCKER_ORGANIZATION}" >> $GITHUB_OUTPUT
