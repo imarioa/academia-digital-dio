@@ -77,5 +77,5 @@ jobs:
     steps:
       - name: Teste persistencia
         run: |
-          echo "${{env.docker_org}}"
+          ls "${{env.docker_org}}"
           echo "${{ needs.seting-variables.outputs.project_name }}"
