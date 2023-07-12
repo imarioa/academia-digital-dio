@@ -22,7 +22,8 @@ jobs:
       run: |
         echo ${{vars.V_TESTE2}} >> ~/.bashrc
         source ~/.bashrc
-        echo "docker_org="${DOCKER_ORGANIZATION}"" >> $GITHUB_OUTPUT
+        ls $DOCKER_ORGANIZATION
+        echo "docker_org=${DOCKER_ORGANIZATION}" >> $GITHUB_OUTPUT
         echo "dockerhub_user=${DOCKERHUB_USER}" >> $GITHUB_OUTPUT
         echo "dockerhub_pwd=${DOCKERHUB_PWD}" >> $GITHUB_OUTPUT
         echo "project_name=${PROJECT_NAME}" >> $GITHUB_OUTPUT
