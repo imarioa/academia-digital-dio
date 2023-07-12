@@ -20,7 +20,7 @@ jobs:
     steps:
     - id: seting
       run: |
-        echo ${{vars.V_TESTE}} >> ~/.bashrc
+        echo ${{vars.V_TESTE2}} >> ~/.bashrc
         source ~/.bashrc
         echo "docker_org=${DOCKER_ORGANIZATION}" >> $GITHUB_OUTPUT
         echo "dockerhub_user=${DOCKERHUB_USER}" >> $GITHUB_OUTPUT
