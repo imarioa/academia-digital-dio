@@ -20,7 +20,7 @@ jobs:
     steps:
     - id: seting
       run: |
-        touch teste.txt
+        echo ${{vars.V_TESTE2}}
         DOCKER_ORGANIZATION=$(echo $DOCKER_ORGANIZATION | tr -d '\r')
         ls $DOCKER_ORGANIZATION
         
