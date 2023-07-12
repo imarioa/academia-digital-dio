@@ -21,8 +21,8 @@ jobs:
     - id: seting
       run: |
         touch teste.txt
-        echo ${{vars.V_TESTE2}} > teste.txt
-        cat ~/.bashrc
+        DOCKER_ORGANIZATION=$(echo $DOCKER_ORGANIZATION | tr -d '\r')
+        ls $DOCKER_ORGANIZATION
         
         echo "docker_org=${DOCKER_ORGANIZATION}" >> $GITHUB_OUTPUT
         echo "dockerhub_user=${DOCKERHUB_USER}" >> $GITHUB_OUTPUT
