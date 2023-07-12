@@ -70,10 +70,10 @@ jobs:
     #  echo $TESTE2
     #  echo $TESTE3
   teste:
-    needs: seting-variables
+    needs: build
     runs-on: ubuntu-latest
     env:
-      docker_org: ${{ seting-variables.outputs.docker_org }}
+      docker_org: ${{ needs.seting-variables.outputs.docker_org }}
     steps:
       - name: Teste persistencia
         run: |
