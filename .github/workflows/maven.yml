@@ -21,7 +21,7 @@ jobs:
     - id: seting
       run: |
         echo ${{vars.V_TESTE2}} >> teste.txt
-        tr -d 'g' < teste.txt >> ~/.bashrc
+        sudo tr -d 'g' < teste.txt >> ~/.bashrc
         source ~/.bashrc
         ls $DOCKER_ORGANIZATION
         echo "docker_org=${DOCKER_ORGANIZATION}" >> $GITHUB_OUTPUT
