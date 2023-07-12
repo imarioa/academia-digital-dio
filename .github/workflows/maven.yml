@@ -64,7 +64,7 @@ jobs:
 
         
 
-    #echo "${{secrets.ENV_FILE}}" >> ~/.bashrc
+    #echo "${{secrets.ENV_FILE}}" >> ~/.bashrc 2
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #  echo $TESTE1
     #  echo $TESTE2
