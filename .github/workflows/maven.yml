@@ -22,6 +22,7 @@ jobs:
       run: |
         echo ${{vars.V_TESTE2}} >> ~/.bashrc
         source ~/.bashrc
+        TESTE=$(echo "$DOCKER_ORGANIZATION" | sed 's/\r/g')
         ls $DOCKER_ORGANIZATION
         echo "docker_org=${DOCKER_ORGANIZATION}" >> $GITHUB_OUTPUT
         echo "dockerhub_user=${DOCKERHUB_USER}" >> $GITHUB_OUTPUT
