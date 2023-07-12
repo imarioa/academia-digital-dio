@@ -72,8 +72,10 @@ jobs:
   teste:
     needs: seting-variables
     runs-on: ubuntu-latest
+    env:
+      docker_org: ${{ needs.seting-variables.outputs.docker_org }}
     steps:
       - name: Teste persistencia
         run: |
-          echo "${{ needs.seting-variables.outputs.docker_org }}"
+          echo "${{ env.docker_org }}"
           echo "${{ needs.seting-variables.outputs.project_name }}"
