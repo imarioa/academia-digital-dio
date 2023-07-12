@@ -18,17 +18,38 @@ jobs:
   seting-variables:
     runs-on: ubuntu-latest
     steps:
-    - id: teste
+    - id: seting
       run: |
-        echo ${{secrets.S_TESTE}} >> ~/.bashrc
+        echo ${{secrets.V_TESTE}} >> ~/.bashrc
         source ~/.bashrc
-        export TESTE45=Imario
-        echo ${TESTE1}
-        echo "teste1=${TESTE1}" >> $GITHUB_OUTPUT
-        echo "teste2=${TESTE2}" >> $GITHUB_OUTPUT
+        echo "docker_org=${DOCKER_ORGANIZATION}" >> $GITHUB_OUTPUT
+        echo "dockerhub_user=${DOCKERHUB_USER}" >> $GITHUB_OUTPUT
+        echo "dockerhub_pwd=${DOCKERHUB_PWD}" >> $GITHUB_OUTPUT
+        echo "project_name=${PROJECT_NAME}" >> $GITHUB_OUTPUT
+        echo "app_version=${APP_VERSION}" >> $GITHUB_OUTPUT
+        echo "ssh_host_release=${SSH_HOST_RELEASE}" >> $GITHUB_OUTPUT
+        echo "docker_name_image_release=${DOCKER_IMAGE_NAME_RELEASE}" >> $GITHUB_OUTPUT
+        echo "container_name_release=${CONTAINER_NAME_RELEASE}" >> $GITHUB_OUTPUT
+        echo "container_name_release_backup=${CONTAINER_NAME_RELEASE_BACKUP}" >> $GITHUB_OUTPUT
+        echo "ports_release=${CONTAINER_PORTS_RELEASE}" >> $GITHUB_OUTPUT
+        echo "database_name_release=${DATABASE_NAME_RELEASE}" >> $GITHUB_OUTPUT
+        echo "database_username_release=${DATABASE_USERNAME_RELEASE}" >> $GITHUB_OUTPUT
+        echo "database_password_release=${DATABASE_PASSWORD_RELEASE}" >> $GITHUB_OUTPUT
     outputs:
-      teste1: ${{ steps.teste.outputs.teste1 }}
-      teste2: ${{ steps.teste.outputs.teste2 }}
+      docker_org: ${{ steps.seting.outputs.docker_org }}
+      dockerhub_user: ${{ steps.seting.outputs.dockerhub_user }}
+      dockerhub_pwd: ${{ steps.seting.outputs.dockerhub_pwd }}
+      project_name: ${{ steps.seting.outputs.project_name }}
+      app_version: ${{ steps.seting.outputs.app_version }}
+      ssh_host_release: ${{ steps.seting.outputs.ssh_host_release }}
+      docker_name_image_release: ${{ steps.seting.outputs.docker_name_image_release }}
+      container_name_release: ${{ steps.seting.outputs.container_name_release }}
+      container_name_release_backup: ${{ steps.seting.outputs.container_name_release_backup }}
+      ports_release: ${{ steps.seting.outputs.ports_release }}
+      database_name_release: ${{ steps.seting.outputs.database_name_release }}
+      database_username_release: ${{ steps.seting.outputs.database_username_release }}
+      database_password_release: ${{ steps.seting.outputs.database_password_release }}
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -54,5 +75,5 @@ jobs:
     steps:
       - name: Teste persistencia
         run: |
-          echo "${{ needs.seting-variables.outputs.teste1 }}"
-          echo "${{ needs.seting-variables.outputs.teste2 }}"
+          echo "${{ needs.seting-variables.outputs.docker_org }}"
+          echo "${{ needs.seting-variables.outputs.project_name }}"
