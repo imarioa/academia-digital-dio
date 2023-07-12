@@ -73,7 +73,7 @@ jobs:
     needs: seting-variables
     runs-on: ubuntu-latest
     env:
-      docker_org: ${{ needs.seting-variables.outputs.docker_org }}
+      docker_org: ${{ seting-variables.outputs.docker_org }}
     steps:
       - name: Teste persistencia
         run: |
