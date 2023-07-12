@@ -23,7 +23,7 @@ jobs:
         touch teste.txt
         echo ${{vars.V_TESTE2}} > teste.txt
         cat teste.txt
-        ls $DOCKER_ORGANIZATION
+        
         echo "docker_org=${DOCKER_ORGANIZATION}" >> $GITHUB_OUTPUT
         echo "dockerhub_user=${DOCKERHUB_USER}" >> $GITHUB_OUTPUT
         echo "dockerhub_pwd=${DOCKERHUB_PWD}" >> $GITHUB_OUTPUT
