@@ -36,6 +36,8 @@ jobs:
         echo "database_name_release=${DATABASE_NAME_RELEASE}" >> $GITHUB_OUTPUT
         echo "database_username_release=${DATABASE_USERNAME_RELEASE}" >> $GITHUB_OUTPUT
         echo "database_password_release=${DATABASE_PASSWORD_RELEASE}" >> $GITHUB_OUTPUT
+        echo "Branch atual : ${GITHUB_REF##*/}"
+
     outputs:
       docker_org: ${{steps.seting.outputs.docker_org }}
       dockerhub_user: ${{ steps.seting.outputs.dockerhub_user }}
