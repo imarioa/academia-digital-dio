@@ -1,4 +1,11 @@
-# Changelog Imario
+# ATI
+### [1.6.1](https://github.com/imarioa/academia-digital-dio/compare/v1.6.0...v1.6.1) (2023-08-25)
+
+
+### Refactor
+
+* **teste:** teste ([c03dca4](https://github.com/imarioa/academia-digital-dio/commit/c03dca490c4ffbf4f9ac6687be5b65432f8cdf84))
+
 ## [1.6.0](https://github.com/imarioa/academia-digital-dio/compare/v1.5.0...v1.6.0) (2023-08-25)
 
 
