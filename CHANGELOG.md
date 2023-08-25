@@ -1,4 +1,36 @@
 # Changelog Imario
+## [1.6.0](https://github.com/imarioa/academia-digital-dio/compare/v1.5.0...v1.6.0) (2023-08-25)
+
+
+### Features
+
+* **feat:** test ([2081cc9](https://github.com/imarioa/academia-digital-dio/commit/2081cc93bfc63b008a450f9bfbff2d5827dff477))
+
+
+### Bug Fixes
+
+* **fix:** bug fix ([8d4f5b3](https://github.com/imarioa/academia-digital-dio/commit/8d4f5b375a2733d65bd99bacd5ccd17c31ea2dfe))
+
+
+### Chore
+
+* **chore:** teste ([0da99be](https://github.com/imarioa/academia-digital-dio/commit/0da99befdc2948a987ef3d7e84de4ef67cfacc19))
+
+
+### Documentation
+
+* **documentation:** docs ([8062c7a](https://github.com/imarioa/academia-digital-dio/commit/8062c7a1ac7ddbd3d1c3bb1ac5a9bf52ce3ac053))
+
+
+### CI Configuration
+
+* **ci:** tests ci ([995bd98](https://github.com/imarioa/academia-digital-dio/commit/995bd982ce765721013d89d85758b312e559700d))
+
+
+### Refactor
+
+* **refactor:** refactor ([ee42fa9](https://github.com/imarioa/academia-digital-dio/commit/ee42fa98dd33dea13b45f7e8932e47b31f6ed041))
+
 ## [1.5.0](https://github.com/imarioa/academia-digital-dio/compare/v1.4.0...v1.5.0) (2023-08-25)
 
 
