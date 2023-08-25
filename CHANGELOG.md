@@ -1,4 +1,11 @@
 # Changelog Imario
+## [1.2.0](https://github.com/imarioa/academia-digital-dio/compare/v1.1.1...v1.2.0) (2023-08-25)
+
+
+### Features
+
+* **teste:** testando ([a30ebd0](https://github.com/imarioa/academia-digital-dio/commit/a30ebd0989688ff6a7269fa625ea27fc0578e355))
+
 ### [1.1.1](https://github.com/imarioa/academia-digital-dio/compare/v1.1.0...v1.1.1) (2023-08-24)
 
 
