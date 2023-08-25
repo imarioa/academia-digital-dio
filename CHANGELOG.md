@@ -1,4 +1,17 @@
 # Changelog Imario
+## [1.4.0](https://github.com/imarioa/academia-digital-dio/compare/v1.3.0...v1.4.0) (2023-08-25)
+
+
+### Features
+
+* **teste-pr:** testando pr ([9898217](https://github.com/imarioa/academia-digital-dio/commit/98982172d37d1b4ae642714ed2fa57cc737f9097)), closes [#45](https://github.com/imarioa/academia-digital-dio/issues/45)
+* **teste:** testando pela segunda vez ([3c80f90](https://github.com/imarioa/academia-digital-dio/commit/3c80f9065ca26e2f4ad930b89c4d04636705c513)), closes [#2](https://github.com/imarioa/academia-digital-dio/issues/2)
+
+
+### Melhorias de Performance
+
+* **teste:** testando ([81d812f](https://github.com/imarioa/academia-digital-dio/commit/81d812f8358e8a581d0858014df6c88745ef03b9))
+
 ## [1.3.0](https://github.com/imarioa/academia-digital-dio/compare/v1.2.0...v1.3.0) (2023-08-25)
 
 
