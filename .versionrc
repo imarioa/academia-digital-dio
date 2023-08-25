@@ -1,0 +1,17 @@
+{
+    "types": [
+        {"type": "feat", "section": "Features"},
+        {"type": "fix", "section": "Bug Fixes"},
+        {"type": "chore", "hidden": true},
+        {"type": "docs", "hidden": true},
+        {"type": "style", "hidden": true},
+        {"type": "refactor", "hidden": true},
+        {"type": "perf", "section": "Melhorias de Performance"},
+        {"type": "test", "hidden": true},
+        {"type": "ci", "section": "Configurações de CI"}
+    ],
+    "releaseCommitMessageFormat": "chore(release): {{currentTag}}",
+    "header": "# Changelog Imario",
+    "issue": "https://foo.jira.com/browse-1/",
+    "issues": "https://foo.jira.com/browse-2/"
+}
