@@ -2,16 +2,14 @@
     "types": [
         {"type": "feat", "section": "Features"},
         {"type": "fix", "section": "Bug Fixes"},
-        {"type": "chore", "hidden": true},
-        {"type": "docs", "hidden": true},
-        {"type": "style", "hidden": true},
-        {"type": "refactor", "hidden": true},
-        {"type": "perf", "section": "Melhorias de Performance"},
-        {"type": "test", "hidden": true},
-        {"type": "ci", "section": "Configurações de CI"}
+        {"type": "chore", "section": "Chore"},
+        {"type": "docs", "section": "Documentation"},
+        {"type": "style", "section": "Style"},
+        {"type": "refactor", "section": "Refactor"},
+        {"type": "perf", "section": "Performance"},
+        {"type": "test", "section": "Tests"},
+        {"type": "ci", "section": "CI Configuration"}
     ],
     "releaseCommitMessageFormat": "chore(release): {{currentTag}}",
-    "header": "# Changelog Imario",
-    "issue": "https://foo.jira.com/browse-1/",
-    "issues": "https://foo.jira.com/browse-2/"
+    "header": "# ATI"
 }
