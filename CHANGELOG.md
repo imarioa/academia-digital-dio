@@ -1,4 +1,17 @@
 # Changelog Imario
+## [1.5.0](https://github.com/imarioa/academia-digital-dio/compare/v1.4.0...v1.5.0) (2023-08-25)
+
+
+### Features
+
+* **testando:** testando ([19f75eb](https://github.com/imarioa/academia-digital-dio/commit/19f75eb1a5b1155210c9b50438c0346ef59f0361)), closes [#3](https://github.com/imarioa/academia-digital-dio/issues/3)
+* **testanndo:** test ([74f588f](https://github.com/imarioa/academia-digital-dio/commit/74f588fb3c4d98f0bc10a58b733401b05ee37383))
+
+
+### Chore
+
+* **removendo:** removendo arquivos inuteis ([18d8eb9](https://github.com/imarioa/academia-digital-dio/commit/18d8eb9939ab00117ff2be7d7f28ef6fc6a7e2b4))
+
 ## [1.4.0](https://github.com/imarioa/academia-digital-dio/compare/v1.3.0...v1.4.0) (2023-08-25)
 
 
