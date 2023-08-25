@@ -11,5 +11,5 @@
         {"type": "ci", "section": "CI Configuration"}
     ],
     "releaseCommitMessageFormat": "chore(release): {{currentTag}}",
-    "header": "# Changelog Imario"
+    "header": "# ATI"
 }
