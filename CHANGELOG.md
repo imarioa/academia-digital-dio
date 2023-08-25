@@ -13,6 +13,13 @@
 
 * **teste:** testando branch ([24c9b7d](https://github.com/imarioa/academia-digital-dio/commit/24c9b7dbd01468e0a81bf6ca7b4a740aa8602b7d))
 
+## [1.3.0](https://github.com/imarioa/academia-digital-dio/compare/v1.2.0...v1.3.0) (2023-08-25)
+
+
+### Features
+
+* **teste:** testando branch ([24c9b7d](https://github.com/imarioa/academia-digital-dio/commit/24c9b7dbd01468e0a81bf6ca7b4a740aa8602b7d))
+
 ## [1.2.0](https://github.com/imarioa/academia-digital-dio/compare/v1.1.1...v1.2.0) (2023-08-25)
 
 
