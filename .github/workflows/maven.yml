@@ -1,83 +1,25 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Java CI with Maven
+name: Bump version
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 
 jobs:
-  seting-variables:
+  bump_version:
+    if: "!startsWith(github.event.head_commit.message, 'bump:')"
     runs-on: ubuntu-latest
+    name: "Bump version and create changelog with commitizen"
     steps:
-    - id: seting
-      run: |
-        echo ${{vars.V_TESTE2}}
-     
-        echo "docker_org=${DOCKER_ORGANIZATION}" >> $GITHUB_OUTPUT
-        echo "dockerhub_user=${DOCKERHUB_USER}" >> $GITHUB_OUTPUT
-        echo "dockerhub_pwd=${DOCKERHUB_PWD}" >> $GITHUB_OUTPUT
-        echo "project_name=${PROJECT_NAME}" >> $GITHUB_OUTPUT
-        echo "app_version=${APP_VERSION}" >> $GITHUB_OUTPUT
-        echo "ssh_host_release=${SSH_HOST_RELEASE}" >> $GITHUB_OUTPUT
-        echo "docker_name_image_release=${DOCKER_IMAGE_NAME_RELEASE}" >> $GITHUB_OUTPUT
-        echo "container_name_release=${CONTAINER_NAME_RELEASE}" >> $GITHUB_OUTPUT
-        echo "container_name_release_backup=${CONTAINER_NAME_RELEASE_BACKUP}" >> $GITHUB_OUTPUT
-        echo "ports_release=${CONTAINER_PORTS_RELEASE}" >> $GITHUB_OUTPUT
-        echo "database_name_release=${DATABASE_NAME_RELEASE}" >> $GITHUB_OUTPUT
-        echo "database_username_release=${DATABASE_USERNAME_RELEASE}" >> $GITHUB_OUTPUT
-        echo "database_password_release=${DATABASE_PASSWORD_RELEASE}" >> $GITHUB_OUTPUT
-        echo "Branch atual : ${GITHUB_REF##*/}"
-
-    outputs:
-      docker_org: ${{steps.seting.outputs.docker_org }}
-      dockerhub_user: ${{ steps.seting.outputs.dockerhub_user }}
-      dockerhub_pwd: ${{ steps.seting.outputs.dockerhub_pwd }}
-      project_name: ${{ steps.seting.outputs.project_name }}
-      app_version: ${{ steps.seting.outputs.app_version }}
-      ssh_host_release: ${{ steps.seting.outputs.ssh_host_release }}
-      docker_name_image_release: ${{ steps.seting.outputs.docker_name_image_release }}
-      container_name_release: ${{ steps.seting.outputs.container_name_release }}
-      container_name_release_backup: ${{ steps.seting.outputs.container_name_release_backup }}
-      ports_release: ${{ steps.seting.outputs.ports_release }}
-      database_name_release: ${{ steps.seting.outputs.database_name_release }}
-      database_username_release: ${{ steps.seting.outputs.database_username_release }}
-      database_password_release: ${{ steps.seting.outputs.database_password_release }}
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 11
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: maven
-
-
-        
-
-    #echo "${{secrets.ENV_FILE}}" >> ~/.bashrc 2 3
-    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    #  echo $TESTE1
-    #  echo $TESTE2
-    #  echo $TESTE3
-  teste:
-    needs: [build, seting-variables]
-    runs-on: ubuntu-latest
-    env:
-      docker_org: ${{ needs.seting-variables.outputs.docker_org }}
-    steps:
-      - name: Teste persistencia
-        run: |
-          ls "${{env.docker_org}}"
-          echo "${{ needs.seting-variables.outputs.project_name }}"
+      - name: Check out
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: "${{ secrets.GITHUB_TOKEN }}"
+      - id: cz
+        name: Create bump and changelog
+        uses: commitizen-tools/commitizen-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print Version
+        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
