@@ -1,3 +1,27 @@
+## 1.4.2 (2023-09-05)
+
+### Fix
+
+- **teste**: testando fix
+- **teste0**: testando
+
+### Refactor
+
+- **removendo**: removendo arquivos
+
+## 1.4.1 (2023-09-05)
+
+### Fix
+
+- **teste**: testando tag
+- **testando**: testando
+
+## 1.4.0 (2023-09-05)
+
+### Feat
+
+- **teste**: testando
+
 ## 1.3.0 (2023-09-05)
 
 ### Feat
