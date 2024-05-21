@@ -7,6 +7,7 @@ on:
 
 jobs:
   bump-version:
-      - name: Push using ssh
+    name: Push using ssh
+    steps:
         run: |
           echo "teste"
